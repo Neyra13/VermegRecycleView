@@ -7,7 +7,20 @@ public class Contact {
     private String tel ;
     private int photo ;
 
-    public Contact() {
+    public Contact(int i, String string, String cursorString) {
+    }
+
+    public Contact(String name, String lastName, String tel) {
+        this.name = name;
+        this.lastName = lastName;
+        this.tel = tel;
+    }
+
+    public Contact(int id, String name, String lastName, String tel) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.tel = tel;
     }
 
     public Contact(int id, String name, String lastName, String tel, int photo) {
@@ -23,6 +36,15 @@ public class Contact {
         this.lastName = lastName;
         this.tel = tel;
         this.photo = photo;
+    }
+
+    public Contact(String name, String tel) {
+        this.name = name;
+        this.tel = tel;
+    }
+
+    public Contact() {
+
     }
 
     public int getId() {
