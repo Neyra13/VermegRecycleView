@@ -1,6 +1,7 @@
 package com.example.vermegrecycleview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         rc=findViewById(R.id.recycleContact);
         adapter=new ContactAdapter(MainActivity.this,ListData);
         rc.setLayoutManager(new LinearLayoutManager(this));
+        rc.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
         rc.setAdapter(adapter);
         getData();
     }

@@ -1,11 +1,14 @@
 package com.example.vermegrecycleview;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +28,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MViewHol
     @Override
     public MViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_row,parent,false);
+                .inflate(R.layout.item_row_card,parent,false);
         return new MViewHolder(v);
     }
 
@@ -35,6 +38,20 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MViewHol
         holder.imgPhoto.setImageResource((c.getPhoto()));
         holder.tvTel.setText(c.getTel());
         holder.tvNomPrenom.setText(c.getName()+" "+c.getLastName());
+        holder.imgInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Info", Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.imgTel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Uri uri = Uri.parse("tel:"+c.getTel());
+                Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
