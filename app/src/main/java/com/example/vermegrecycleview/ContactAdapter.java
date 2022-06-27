@@ -31,7 +31,10 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MViewHolder holder, int position) {
-
+        Contact c = mList.get(position);
+        holder.imgPhoto.setImageResource((c.getPhoto()));
+        holder.tvTel.setText(c.getTel());
+        holder.tvNomPrenom.setText(c.getName()+" "+c.getLastName());
     }
 
     @Override
